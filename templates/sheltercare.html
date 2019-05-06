@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="icon" href="../static/images/favicon.png">
+    <link rel="stylesheet" href="../static/css/gallery.css" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var sc = {lat: 44.055947, lng: -123.099877};
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: sc
+          
+        });
+        var marker = new google.maps.Marker({position: sc, map: map});
+
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Sheltercare</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Sheltercare</b> provides  <b>Short Term housing,</b>'+
+            ' <b>Long Term Housing</b> and a variety of <b>Support Services</b>.</p>'+
+            '<p>Their phone number is '+
+            '<b>(541) 686-1262 </b>'+
+            '</p>'+
+            '<p> Their <b>website</b> is https://www.sheltercare.org/</p>'
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv-XmEGorLb8KAJe66s7jI_QXW5wRPgag&callback=initMap"
+    async defer></script>
+  </body>
+</html>

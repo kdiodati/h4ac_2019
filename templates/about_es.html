@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Buscador de recursos para personas sin hogar</title>
+    <link rel="icon" href="../static/images/favicon.png">
+    <link rel="stylesheet" href="../static/css/gallery.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="Menu Header">
+        <h1>Eugene Buscador de recursos para personas sin hogar</h1>
+        <h1 style="font-size:24px">
+          Rellene el formulario para resultados personalizados O
+          <form method="POST" action="/index" id="about" name="about">
+            <button
+              style="background-color: #2dd844; margin-top:25px;"
+              type="submit"
+              id="continue"
+              onclick="window.location.href = 'http://localhost:5000/index_es';"
+            >
+              Continue
+            </button>
+          </form>
+        </h1>
+        <button
+          style="position:absolute; top:10px; left:215px; font-size:24px; color:white; background-color:white; padding: 4px; border-radius:5px;"
+          onclick="window.location.href='/about'"
+        >
+          <img
+            style="height:23px; width:28px;"
+            src="../static/images/english.png"
+            alt=""
+          />
+        </button>
+        <button
+          style="position:absolute; top:10px; left:10px; font-size:24px; color:white; background-color:red; padding: 4px; border-radius:5px;"
+          onclick="window.location.href='/mainmap'"
+        >
+          Map All Results
+        </button>
+        <a href="https://lanecounty.org/">
+          <img
+            style="height:150px; width:100px; position:absolute; right:0; top:25px; margin-right:60px;"
+            src="../static/images/lanecounty.png"
+            alt=""
+          />
+        </a>
+        <span class="btnsize">
+          <img
+            id="zoom"
+            style="width:50px; height:50px; position:absolute; bottom:10px; left:10px;"
+            src="../static/images/zoomin.png"
+            alt=""
+          />
+        </span>
+      </div>
+      <div class="Menu Resources">
+        <form method="POST" action="/index_es" id="about" name="about">
+          <div class="row">
+            <div class="column"><h3 style="font-size:20px;">Género:</h3></div>
+            <div class="column">
+              <label class="radcont"
+                >Masculino
+                <input name="gender" id="male" value="M" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Hembra
+                <input name="gender" id="female" value="F" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Transgénero
+                <input name="gender" id="trans" value="T" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="column">
+              <h3 style="font-size:20px;">¿18+ años de edad?</h3>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Sí <input name="age" id="yes" value="Y" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >No <input name="age" id="no" value="N" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="column">
+              <h3 style="font-size:20px;">¿Veterano?</h3>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Sí <input name="veteran" id="yes" value="Y" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >No <input name="veteran" id="no" value="N" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="column">
+              <h3 style="font-size:20px;">¿Discapacitado?</h3>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Sí <input name="disabled" id="yes" value="Y" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >No <input name="disabled" id="no" value="N" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="column">
+              <h3 style="font-size:20px;">¿Mascotas?</h3>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Sí <input name="pets" id="yes" value="Y" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >No <input name="pets" id="no" value="N" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="column">
+              <h3 style="font-size:20px;">¿Con Su Familia?</h3>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >Sí <input name="family" id="yes" value="Y" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="column">
+              <label class="radcont"
+                >No <input name="family" id="no" value="N" type="radio" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <button
+            style="background-color: #2dd844; margin-top:25px;"
+            type="submit"
+            id="continue"
+            onclick="window.location.href = 'http://localhost:5000/index_es';"
+          >
+            Continuar
+          </button>
+        </form>
+      </div>
+      <div class="Menu ContactForm">
+        <h2 style="text-decoration:underline; font-size:28px;">
+          Contactos de Emergencia
+        </h2>
+
+        <!-- IDEA: City of Eugene Helpline Contact Form -->
+
+        <label style="color:#ef0b31" for="#EES"
+          ><i>Servicios de Emergencia de Eugene</i></label
+        >
+        <a id="EES" style="" href="tel:5414617550">
+          <label for="">Teléfono: </label>(541) 344-8757
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/phone_icon.png"
+            alt=""
+        /></a>
+        <a style="font-size:20px;" href="http://localhost:5000/ees"
+          ><label for="">Ubicación: </label>1255 Hilyard St, Eugene, OR 97401
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/location_dopplar.png"
+            alt=""
+        /></a>
+
+        <!-- IDEA: Sacred Heart Helpline Contact Form -->
+        <hr />
+
+        <label style="color:#ef0b31" for="#SHMC"
+          ><i
+            >Centro Médico Sagrado Corazón Servicios de Salud en el Hogar</i
+          ></label
+        >
+        <a id="SHMC" style="" href="tel:5414617550">
+          <label for="">Teléfono: </label>(541) 461-7550
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/phone_icon.png"
+            alt=""
+          />
+        </a>
+        <a style="font-size:20px;" href="#"
+          ><label for="">Ubicación: </label>677 E 12th Ave, Eugene, OR 97401
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/location_dopplar.png"
+            alt=""
+        /></a>
+
+        <!-- IDEA: Non-Emergency Helpline Contact Form -->
+        <hr />
+        <label style="color:#ef0b31" for="#NEH"
+          ><i>Línea de ayuda que no es de Emergencia</i></label
+        >
+        <a id="NEH" style="" href="#">
+          <label for="">Teléfono: </label>(541) 555-5555
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/phone_icon.png"
+            alt=""
+        /></a>
+        <a style="font-size:20px;" href="#"
+          ><label for="">Ubicación: </label>2232 Coburg Rd, Eugene, OR 97401
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/location_dopplar.png"
+            alt=""
+        /></a>
+        <br />
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="../static/scale.js"></script>
+  </body>
+</html>

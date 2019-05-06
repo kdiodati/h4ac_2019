@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Buscador de recursos para personas sin hogar</title>
+    <link rel="icon" href="../static/images/favicon.png">
+    <link rel="stylesheet" href="../static/css/gallery.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="Menu Header">
+        <h1>Disponible {{g.request}} Recursos cerca de usted</h1>
+        <h3>Eugene, OR</h3>
+        <a
+          style="position:absolute; top:10px; left:10px; font-size:24px; color:white; background-color:red; padding: 4px; border-radius:5px;"
+          href="http://localhost:5000/index_es"
+          >Volver a casa</a
+        >
+        <a href="https://lanecounty.org/">
+          <img
+            style="height:150px; width:100px; position:absolute; right:0; top:25px; margin-right:60px;"
+            src="../static/images/lanecounty.png"
+            alt=""
+          />
+        </a>
+        <span class="btnsize">
+          <img
+            id="zoom"
+            style="width:50px; height:50px; position:absolute; bottom:10px; left:10px;"
+            src="../static/images/zoomin.png"
+            alt=""
+          />
+        </span>
+      </div>
+      <div class="Menu Resources">
+        <!-- IDEA: Here is where we will inject the appropriate DB data -->
+        {% if g.empty == True %}
+        <h4 style="text-align:center; padding: 10px;">
+          Actualmente no hay resultados para su solicitud. Por favor intenta ampliar tu búsqueda.
+        </h4>
+        {% endif %}
+        <div class="results_backdrop">
+          {% for results in g.results %}
+
+          <div class="results">
+            <h4
+              style="font-size:22px; margin-left: 20px; margin-top:5; margin-bottom:0; text-decoration:underline;"
+            >
+              {{results.Name}}
+            </h4>
+            <a
+              style="color:#444;"
+              href="http://localhost:5000/{{results.EndpointName}}"
+              >Dirección: {{results.Address}}</a
+            >
+            <br />
+            <a href="tel:{{results.Phone}}">Teléfono: {{results.Phone}}</a>
+          </div>
+          <br />
+          <label style="margin-left:20px;" for="#filters"
+            >Accesibilidad:
+          </label>
+
+          <div class="filters">
+            {% if results.Restrictions[0] == True %}
+            <p style="color:#444; font-size:18px;">
+              Este servicio es accesible para todos
+            </p>
+            {% endif %} {%for img in results.Restrictions%}
+            <img
+              style="height:100px; width:100px; margin-left: 10px;"
+              src="./static/images/{{img}}"
+              alt=""
+            />
+            {% endfor %}
+          </div>
+          <hr>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="Menu ContactForm">
+        <h2 style="text-decoration:underline; font-size:28px;">
+          Contactos de Emergencia
+        </h2>
+        <!-- IDEA: City of Eugene Helpline Contact Form -->
+
+        <label style="color:#ef0b31" for="#EES"
+          ><i>Servicios de Emergencia de Eugene</i></label
+        >
+        <a id="EES" style="" href="#">
+          <label for="">Teléfono: </label>(541) 344-8757
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/phone_icon.png"
+            alt=""
+        /></a>
+        <a style="font-size:20px;" href="http://localhost:5000/ees"
+          ><label for="">Ubicación: </label>1255 Hilyard St, Eugene, OR 97401
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/location_dopplar.png"
+            alt=""
+        /></a>
+
+        <!-- IDEA: Sacred Heart Helpline Contact Form -->
+        <hr />
+
+        <label style="color:#ef0b31" for="#SHMC"
+          ><i>Centro Médico Sagrado Corazón Servicios de Salud en el Hogar</i></label
+        >
+        <a id="SHMC" style="" href="tel:5414617550">
+          <label for="">Teléfono: </label>(541) 461-7550
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/phone_icon.png"
+            alt=""
+          />
+        </a>
+        <a style="font-size:20px;" href="#"
+          ><label for="">Ubicación: </label>677 E 12th Ave, Eugene, OR 97401
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/location_dopplar.png"
+            alt=""
+        /></a>
+
+        <!-- IDEA: Non-Emergency Helpline Contact Form -->
+        <hr />
+        <label style="color:#ef0b31" for="#NEH"
+          ><i>Línea de ayuda que no es de Emergencia</i></label
+        >
+        <a id="NEH" style="" href="#">
+          <label for="">Teléfono: </label>(541) 555-5555
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/phone_icon.png"
+            alt=""
+        /></a>
+        <a style="font-size:20px;" href="#"
+          ><label for="">Ubicación: </label>2232 Coburg Rd, Eugene, OR 97401
+          <img
+            style="height:7%; width:7%;"
+            src="../static/images/location_dopplar.png"
+            alt=""
+        /></a>
+        <br />
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="../static/scale.js"></script>
+  </body>
+</html>

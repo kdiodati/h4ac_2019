@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="icon" href="../static/images/favicon.png">
+    <link rel="stylesheet" href="../static/css/gallery.css" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var ffl = {lat: 44.051314, lng: -123.148828};
+      var ees = {lat: 44.046431, lng: -123.081216};
+      var sc = {lat: 44.055947, lng: -123.099877};
+      var css = {lat: 44.047055, lng: -123.120327};
+      var em = {lat: 44.058344, lng: -123.116499};
+      var shs = {lat: 44.046869, lng: -123.082519};
+      var ws = {lat: 44.042388, lng: -123.089251};
+      //centered map around hotspot of homeless population
+      var eug = {lat: 44.049049, lng: -123.094144};
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: eug
+          
+        });
+        //new marker for each resource
+        var eesmarker = new google.maps.Marker({position: ees, map: map});
+        //new content string for each resource
+        var eescontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Eugene Emergency Services- 1255 Hilyard Street, Eugene</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Eugene Emergency Services</b> provides  <b>emerency services</b>'+
+            ' for Everyeone.</p>'+
+            '<p>Their phone number is '+
+            '<b>(541) 344-8757 </b>'+
+            '</p>'+
+            '</div>'+
+            '</div>';
+        //new infowindow for each resource
+        var eesinfowindow = new google.maps.InfoWindow({
+          content: eescontentString
+        });
+        //new listener for each resource
+        eesmarker.addListener('click', function() {
+          eesinfowindow.open(map, eesmarker);
+        });
+
+        var sheltercaremarker = new google.maps.Marker({position: sc, map: map});
+
+        var sheltercarecontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Sheltercare- 499 W. 4th Avenue, Eugene</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Sheltercare</b> provides  <b>Short Term housing,</b>'+
+            ' <b>Long Term Housing</b> and a variety of <b>Support Services</b>.</p>'+
+            '<p>Their phone number is '+
+            '<b>(541) 686-1262 </b>'+
+            '</p>'+
+            '<p> Their <b>website</b> is https://www.sheltercare.org/</p>'
+            '</div>'+
+            '</div>';
+
+        var sheltercareinfowindow = new google.maps.InfoWindow({
+          content: sheltercarecontentString
+        });
+
+        sheltercaremarker.addListener('click', function() {
+          sheltercareinfowindow.open(map, sheltercaremarker);
+        });
+
+        var cssmarker = new google.maps.Marker({position: css, map: map});
+
+        var csscontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Community Supported Shelters- 1160 Grant Street, Eugene</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Community Supported Shelters</b> provides housing for the homeless in the form of <b>Conestoga Huts</b> and '+
+            ' <b>Safe Spot Communities</b>.</p>'+
+            '<p>Their phone number is '+
+            '<b>541-683-0836</b>'+
+            '</p>'+
+            '<p> Their <b>website</b> is https://communitysupportedshelters.org/</p>'
+            '</div>'+
+            '</div>';
+
+        var cssinfowindow = new google.maps.InfoWindow({
+          content: csscontentString
+        });
+
+
+        cssmarker.addListener('click', function() {
+          cssinfowindow.open(map, cssmarker);
+        });
+
+
+        var emmarker = new google.maps.Marker({position: em, map: map});
+
+        var emcontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Eugene Mission- 1542 West First Avenue, Eugene</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Eugene Mission</b> is Eugene/Springfield’s only <b>full-service wellness center</b> for the homeless, providing its guests with a path off the streets, both for the <b>short-term</b> and <b>long-term</b>. </p>'+
+            '<p>Their phone number is '+
+            '<b>(541) 344-3251</b>'+
+            '</p>'+
+            '<p> Their <b>website</b> is https://eugenemission.org/</p>'
+            '</div>'+
+            '</div>';
+
+        var eminfowindow = new google.maps.InfoWindow({
+          content: emcontentString
+        });
+
+
+        emmarker.addListener('click', function() {
+          eminfowindow.open(map, emmarker);
+        });
+
+
+        var wsmarker = new google.maps.Marker({position: ws, map: map});
+
+        var wscontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">womenspace</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>womenspace</b> helps all who are <b>female-identifying</b> survivors of <b>Domestic Violence</b>.'+
+            ' They offer <b>Emergency Services</b>, <b>Safety Planning</b>, <b>Advocacy and Support Services</b>, <b>Housing and Supportive Housing Services</b>, and <b>Children and Youth Services</b>. </p>'+
+            '<p>Their <b>24-hour Cisis and Support Line is (541) 485-6513</b></p>.'
+            +
+            '<p> Their Non-emergency number is <b>541-485-8232</b></p>' +
+            '<p> Their <b>website</b> is http://www.womenspaceinc.org/</p>'
+            '</div>'+
+            '</div>';
+
+        var wsinfowindow = new google.maps.InfoWindow({
+          content: wscontentString
+        });
+
+
+        wsmarker.addListener('click', function() {
+          wsinfowindow.open(map, wsmarker);
+        });
+
+        var fflmarker = new google.maps.Marker({position: ffl, map: map});
+
+        var fflcontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">FOOD for Lane County- 770 Bailey Hill Road, Eugene</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>FOOD for Lane County</b> is a nonprofit food bank dedicated to  <b>alleviating hunger by creating access to food</b>. They accomplish this through their network of <b>Food Programs</b> and <b>Education Programs.</b>'
+             '</p>'+
+            '<p>More information can be found on their website, https://foodforlanecounty.org</p>.'
+            +
+            '<p> Alternatively, call their phone number for more information at is <b>541-343-2822</b></p>'
+            '</div>'+
+            '</div>';
+
+        var fflinfowindow = new google.maps.InfoWindow({
+          content: fflcontentString
+        });
+
+
+        fflmarker.addListener('click', function() {
+          fflinfowindow.open(map, fflmarker);
+        });
+
+
+        var shsmarker = new google.maps.Marker({position: shs, map: map});
+
+        var shscontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Peacehealth Sacred Heart Medical Center- 677 E 12th Ave, Eugene</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Peacehealth Sacred Heart Medical center</b> is a <b>hospital</b>.'+
+             '</p>'+
+            '<p>More information can be found on their website, peacehealth.org</p>.'
+            +
+            '<p> Alternatively, call their phone number for more information at  <b>(541) 461-7550</b></p>'
+            '</div>'+
+            '</div>';
+
+        var shsinfowindow = new google.maps.InfoWindow({
+          content: shscontentString
+        });
+
+
+        shsmarker.addListener('click', function() {
+          shsinfowindow.open(map, shsmarker);
+        });
+
+
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv-XmEGorLb8KAJe66s7jI_QXW5wRPgag&callback=initMap"
+    async defer></script>
+  </body>
+</html>

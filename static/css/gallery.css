@@ -1,0 +1,215 @@
+html {
+  font-size: 100%;
+}
+
+#map {
+  height: 100%;
+}
+
+span {
+  cursor: pointer;
+}
+
+input {
+  cursor: pointer;
+}
+
+body {
+  margin: 40px;
+  background-color: #93d2f9;
+}
+
+img.bg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1024px) {
+  img.bg {
+    left: 50%;
+    margin-left: -512px;
+  }
+}
+
+h4 {
+  color: #444;
+}
+
+h3 {
+  color: #444;
+}
+
+h2 {
+  color: #444;
+}
+
+h1 {
+  color: #444;
+}
+
+.Menu label {
+  color: #444;
+}
+
+.container {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto auto;
+  color: #444;
+}
+.Menu {
+  background-color: white;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 150%;
+}
+
+.Header {
+  position: relative;
+  grid-column: 1 / span 3;
+  text-align: center;
+  border: 2px solid white;
+}
+
+.Resources {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  display: grid;
+  grid-gap: 10px;
+  border: 2px solid white;
+  text-align: center;
+}
+.ContactForm {
+  grid-row: 2;
+  text-align: center;
+  border: 2px solid white;
+}
+button {
+  font: bold 24px Arial;
+  background-color: #357df2;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  margin-bottom: 30px;
+}
+.ContactForm a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #444;
+  display: block;
+}
+.ContactForm a:hover {
+  color: #357df2;
+}
+.row {
+  display: flex;
+  margin-top: 20px;
+}
+.column {
+  flex: 50%;
+}
+.results p {
+  font-size: 18px;
+  margin-left: 20px;
+  display: block;
+}
+.results a {
+  font-size: 22px;
+  margin-left: 20px;
+  color: green;
+}
+
+.results_backdrop {
+  text-align: left;
+  padding: 10px;
+  border: 1px white;
+  border-radius: 5px;
+  width: 100%;
+  margin-right: 20px;
+}
+.filters {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.logo-image {
+  height:64px;
+}
+.radcont {
+  display: block;
+  position: absolute;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.radcont input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.radcont:hover input ~ checkmark {
+  background-color: #ccc;
+}
+.radcont input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.radcont input:checked ~ .checkmark:after {
+  display: block;
+}
+.radcont .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+@media screen and (max-width: 500px) {
+  .filters img {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  #lanecounty {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.Resources label {
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+#map {
+  height: 100%;
+}

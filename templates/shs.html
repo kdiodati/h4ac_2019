@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var shs = {lat: 44.046869, lng: -123.082519};
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: shs
+          
+        });
+        var shsmarker = new google.maps.Marker({position: shs, map: map});
+
+        var shscontentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">The Hospital itself</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Sacred Heart Medical center</b> is a <b>hospital</b>.'+
+             '</p>'+
+            '<p>More information can be found on their website, peacehealth.org</p>.'
+            +
+            '<p> Alternatively, call their phone number for more information at  <b>(541) 461-7550</b></p>'
+            '</div>'+
+            '</div>';
+
+        var shsinfowindow = new google.maps.InfoWindow({
+          content: shscontentString
+        });
+
+
+        shsmarker.addListener('click', function() {
+          shsinfowindow.open(map, shsmarker);
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv-XmEGorLb8KAJe66s7jI_QXW5wRPgag&callback=initMap"
+    async defer></script>
+  </body>
+</html>
